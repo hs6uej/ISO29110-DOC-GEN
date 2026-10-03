@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISO 29110 DocGen</title>
+<script>
+  // apply saved theme + last-known branding before first paint (no flash)
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+    var b = JSON.parse(localStorage.getItem("branding") || "null");
+    if (b && b.brand_color) document.documentElement.style.setProperty("--brand-base", b.brand_color);
+    if (b && b.site_name) document.title = b.site_name;
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a href="#/" class="brand">
+    <span class="logo" id="siteLogo"></span>
+    <span style="min-width:0"><span class="bname" id="siteName">ISO 29110 DocGen</span><small id="siteDesc">ระบบจัดทำเอกสารโครงการ</small></span>
+  </a>
+  <nav>
+    <a href="#/" data-nav="home" class="member-only" hidden>โครงการ</a>
+    <a href="#/admin" data-nav="admin" class="admin-only" hidden>จัดการระบบ</a>
+    <a href="#/settings" data-nav="settings" class="admin-only" hidden>ตั้งค่า</a>
+    <button type="button" class="theme-btn" id="themeBtn" title="สลับโหมดมืด/สว่าง" aria-label="สลับโหมดมืด/สว่าง"></button>
+    <div class="user-menu" id="userMenu"></div>
+  </nav>
+</header>
+<main id="app"></main>
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

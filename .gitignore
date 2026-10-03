@@ -1,0 +1,48 @@
+# ── Secrets (never commit) ──────────────────────────────
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+*service-account*.json
+gcp-*.json
+
+# ── Runtime data ────────────────────────────────────────
+# SQLite DB (users, sessions, logs, project facts) + config.json
+data/
+# generated .docx / .xlsx per project
+storage/
+logs/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── Office temp / lock files ────────────────────────────
+~$*
+*.tmp
+
+# ── Editors / OS ────────────────────────────────────────
+.vscode/
+.idea/
+.claude/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,14 @@
+services:
+  docgen:
+    build: .
+    container_name: iso29110-docgen
+    ports:
+      - "${PORT:-8290}:${PORT:-8290}"   # PORT= in .env (same port inside and outside)
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data          # SQLite DB + config.json
+      - ./storage:/app/storage    # generated .docx / .xlsx (per project folder)
+      - ./secrets:/app/secrets    # gcp-service-account.json for Vertex AI
+    restart: unless-stopped
